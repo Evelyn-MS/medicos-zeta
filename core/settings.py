@@ -23,9 +23,7 @@ INSTALLED_APPS = [
     'django_cpf_cnpj',
     'widget_tweaks',
     
-    'accounts',
-    'clientes',
-    'medicos',
+    'accounts'
 ]
 
 MIDDLEWARE = [

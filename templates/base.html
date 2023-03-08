@@ -23,25 +23,12 @@
         </div>
         <div class="navbar-collapse collapse" id="navbar-main">
           <ul class="nav navbar-nav">
-            <li>
-              <a href="{% url 'clientes:consulta_create'%}">Consultas</a>
-            </li>
-            {% if user.is_staff or user.is_superuser %}
-            <li>
-              <a href="{% url 'medicos:agendar_consulta'%}">Agendas</a>
-            </li>
-            <li>
-              <a href="{% url 'medicos:medico_cadastro'%}">Medicos</a>
-            </li>
-            <li>
-              <a href="{% url 'medicos:especialidade_cadastro'%}">Especialidade</a>
-            </li>
-            {% endif %}
+            
           </ul>
           <ul class="nav navbar-nav navbar-right">
             {% if user.is_authenticated %}
-              <li><a href="{% url 'accounts:index' %}">Minha Conta</a></li>
-              <li><a href="{% url 'accounts:logout' %}">Sair</a></li>
+              <li><a href="{% url 'accounts:index' %}">Cuenta</a></li>
+              <li><a href="{% url 'accounts:logout' %}">Cerrar Sesion</a></li>
             {% else %}
               <li><a href="{% url 'accounts:login' %}">Entrar</a></li>
               <li><a href="{% url 'accounts:register' %}">Registro</a></li>

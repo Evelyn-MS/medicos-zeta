@@ -12,13 +12,13 @@ class User(AbstractBaseUser, PermissionsMixin):
         'Usuário', max_length=30, unique=True, validators=[
             validators.RegexValidator(
                 re.compile('^[\w.@+-]+$'),
-                'Informe um nome de usuário válido. '
-                'Este valor deve conter apenas letras, números '
-                'e os carecteres: @/./+/-/_.'
+                'Ingrese un nombre de usuario valido. '
+                'Este valor debe contener letras , numeros '
+                'y/o los caracteres: @/./+/-/_.'
                 ,  'invalid'
             )
-        ], help_text='Um nome curto que será usado'+
-                    ' para identificá-lo de forma única na plataforma.'
+        ], help_text='Un nombre corto que sera usado'+
+                    ' para identificarlo de forma unica en la plataforma.'
     )
     
     name = models.CharField('Nome', max_length=100)

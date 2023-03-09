@@ -22,7 +22,7 @@ class MedicoCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
     model = Medico
     login_url = 'accounts:login'
-    template_name = 'medicos/cadastro.html'
+    template_name = 'medicos/registro.html'
     fields = ['nome', 'crm', 'email', 'telefone', 'especialidade']
     success_url = reverse_lazy('medicos:medicos_lista')
     
@@ -38,14 +38,14 @@ class EspecialidadeCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
     model = Especialidade
     login_url = 'accounts:login'
-    template_name = 'medicos/cadastro.html'
+    template_name = 'medicos/registro.html'
     fields = ['nome',]
     success_url = reverse_lazy('medicos:especialidade_lista')
     
 class EspecialidadeListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     
     login_url = 'accounts:login'
-    template_name = 'medicos/especialidade_list.html'
+    template_name = 'medicos/especialidades_list.html'
 
     def get_queryset(self):
         return Especialidade.objects.all().order_by('-pk')
@@ -55,7 +55,7 @@ class AgendaCreateView(LoginRequiredMixin, TestMixinIsAdmin, CreateView):
 
     model = Agenda
     login_url = 'accounts:login'
-    template_name = 'medicos/agenda_cadastro.html'
+    template_name = 'medicos/agenda_registro.html'
     fields = ['medico', 'dia', 'horario']
     success_url = reverse_lazy('medicos:agenda_lista')
     
@@ -67,7 +67,7 @@ class AgendaUpdateView(LoginRequiredMixin, TestMixinIsAdmin, UpdateView):
 
     model = Agenda
     login_url = 'accounts:login'
-    template_name = 'medicos/agenda_cadastro.html'
+    template_name = 'medicos/agenda_registro.html'
     fields = ['medico', 'dia', 'horario']
     success_url = reverse_lazy('medicos:agenda_lista')
     
@@ -93,11 +93,11 @@ class AgendaListView(LoginRequiredMixin, TestMixinIsAdmin, ListView):
     def get_queryset(self):
         return Agenda.objects.filter().order_by('-pk')
     
-medico_cadastro = MedicoCreateView.as_view()
+medico_registro = MedicoCreateView.as_view()
 medico_lista = MedicoListView.as_view()
-especialidade_cadastro = EspecialidadeCreateView.as_view()
+especialidad_registro = EspecialidadeCreateView.as_view()
 especialidade_lista = EspecialidadeListView.as_view()
-agenda_cadastro = AgendaCreateView.as_view()
+agenda_registro = AgendaCreateView.as_view()
 agenda_atualizar = AgendaUpdateView.as_view()
 agenda_lista = AgendaListView.as_view()
 agenda_deletar = AgendaDeleteView.as_view()

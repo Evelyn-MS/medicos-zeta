@@ -6,21 +6,21 @@ from django.core.exceptions import ValidationError
 from django.db.models.fields.related import ForeignKey
 
 class Especialidade(models.Model):
-    nome = models.CharField(verbose_name="Nome", max_length=200)
+    nome = models.CharField(verbose_name="Nombre", max_length=200)
     
     def __str__(self):
         return f'{self.nome}'
     
 class Medico(models.Model):
-    nome = models.CharField(verbose_name="Nome", max_length=200)
+    nome = models.CharField(verbose_name="Nombre", max_length=200)
     email = models.EmailField(verbose_name="Email")
     crm = models.CharField(verbose_name="CRM", max_length=200)
     phone_regex = RegexValidator(
     regex=r'^\+?1?\d{9,15}$',
-    message="O número precisa estar neste formato: \
+    message="El numero debe estar en este formato: \
                     '+99 99 9999-0000'.")
 
-    telefone = models.CharField(verbose_name="Telefone",
+    telefone = models.CharField(verbose_name="Telefono",
                                 validators=[phone_regex],
                                 max_length=17, null=True, blank=True)
     especialidade = ForeignKey(Especialidade,

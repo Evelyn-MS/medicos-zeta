@@ -18,10 +18,10 @@ class Cliente(models.Model):
         message="O número precisa estar neste formato: \
                         '+99 99 9999-0000'.")
 
-    telefone = models.CharField(verbose_name="Telefone",
+    telefone = models.CharField(verbose_name="Telefono",
                                 validators=[phone_regex],
                                 max_length=17, null=True, blank=True)
-    cpf = CPFField(verbose_name="CPF",
+    cpf = CPFField(verbose_name="Cedula",
                     max_length=50,
                     unique=True,)
     

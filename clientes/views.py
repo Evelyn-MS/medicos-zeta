@@ -10,7 +10,7 @@ from .models import Cliente, Consulta
 class ClienteCreateView(LoginRequiredMixin ,CreateView):
     
     model = Cliente
-    template_name = 'clientes/cadastro.html'
+    template_name = 'clientes/registro.html'
     fields = ['sexo', 'telefone', 'cpf']
     success_url = reverse_lazy('index')
     
@@ -42,7 +42,7 @@ class ConsultaCreateView(LoginRequiredMixin, CreateView):
 
     model = Consulta
     login_url = 'accounts:login'
-    template_name = 'clientes/cadastro.html'
+    template_name = 'clientes/registro.html'
     fields = ['agenda']
     success_url = reverse_lazy('clientes:consulta_list')
     
@@ -56,7 +56,7 @@ class ConsultaCreateView(LoginRequiredMixin, CreateView):
                 return HttpResponseRedirect(reverse_lazy('clientes:consulta_create'))
         except Cliente.DoesNotExist:
             messages.warning(self.request, 'Complete su registro')
-            return HttpResponseRedirect(reverse_lazy('clientes:cliente_cadastro'))
+            return HttpResponseRedirect(reverse_lazy('clientes:cliente_registro'))
         messages.info(self.request, 'Consulta creada con exito!')
         return HttpResponseRedirect(reverse_lazy('clientes:consulta_list'))
     
@@ -64,7 +64,7 @@ class ConsultaUpdateView(LoginRequiredMixin, UpdateView):
 
     model = Consulta
     login_url = 'accounts:login'
-    template_name = 'clientes/cadastro.html'
+    template_name = 'clientes/registro.html'
     fields = ['agenda']
     success_url = reverse_lazy('medicos:Consulta_lista')
     
@@ -92,19 +92,19 @@ class ConsultaListView(LoginRequiredMixin, ListView):
         try:
             cliente = Cliente.objects.get(user=user)
         except Cliente.DoesNotExist:
-            messages.warning(self.request, 'Crear una Consulta')
+            messages.warning(self.request, 'No tiene consultas')
             return None
         try:
             consultas = Consulta.objects.filter(cliente=cliente).order_by('-pk')
         except Consulta.DoesNotExist:
-            messages.warning(self.request, 'Crear una Consulta')
+            messages.warning(self.request, 'No tiene consultas')
             return None
         return consultas
 
 
-cliente_cadastro = ClienteCreateView.as_view()
+cliente_registro = ClienteCreateView.as_view()
 cliente_atualizar = ClienteUpdateView.as_view()
 consulta_lista = ConsultaListView.as_view()
-consulta_cadastro = ConsultaCreateView.as_view()
+consulta_registro = ConsultaCreateView.as_view()
 consulta_atualizar = ConsultaUpdateView.as_view()
 consulta_excluir = ConsultaDeleteView.as_view()

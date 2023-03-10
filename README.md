@@ -1,9 +1,9 @@
 ## Proyecto de Sistema de Citas Médicas 
 
 En qué consiste este proyecto?
-- Gestionar médicos y especialidad y agendas, asigando por Evelyn Manzaba.
-- Crear una agenda para disponer de citas, asigando por José Luis Rosales.
-- Permitir al usuario elegir una cita en día y hora según la agenda del médico, asigando por Ernesto Acosta.
+- Gestionar médicos y especialidad y agendas, asignado por Evelyn Manzaba.
+- Crear una agenda para disponer de citas, asignado por José Luis Rosales.
+- Permitir al usuario elegir una cita en día y hora según la agenda del médico, asignado por Ernesto Acosta.
 
 ## Configurar el entorno para ejecutar la aplicación web.
 Descarga este repositorio:
